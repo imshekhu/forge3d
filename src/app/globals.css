@@ -72,6 +72,26 @@ a {
   color: var(--ink);
 }
 
+.skip-link {
+  position: fixed;
+  z-index: 1000;
+  top: 12px;
+  left: 12px;
+  padding: 11px 16px;
+  background: var(--acid);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 750;
+  transform: translateY(-160%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus {
+  outline: 2px solid var(--paper);
+  outline-offset: 2px;
+  transform: translateY(0);
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

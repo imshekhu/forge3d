@@ -52,6 +52,14 @@ replace the in-memory limiter with a shared store such as Upstash Redis.
 - Verify pickup/delivery wording and customer response expectations.
 - Run `npm run lint`, `npm run typecheck`, and `npm run build`.
 
+Browser tests cover desktop and mobile layouts, keyboard access, navigation,
+overflow, and the unconfigured quote-delivery state:
+
+```sh
+npx playwright install chromium
+npm run test:e2e
+```
+
 ## Deployment
 
 Import this repository into Vercel, configure the environment variables for the

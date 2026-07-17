@@ -83,7 +83,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main>
+      <main id="main-content">
         <section className="hero" id="top">
           <div className="hero-grid" aria-hidden="true" />
           <div className="hero-glow" aria-hidden="true" />

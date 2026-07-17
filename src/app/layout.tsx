@@ -66,6 +66,9 @@ export default function RootLayout({
   return (
     <html lang="en-CA" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
+        <a className="skip-link" href="#main-content">
+          Skip to main content
+        </a>
         {children}
         <Analytics />
       </body>

@@ -132,6 +132,7 @@ export function QuoteForm() {
       ref={formRef}
       onSubmit={handleSubmit}
       encType="multipart/form-data"
+      aria-label="Project quote request"
     >
       <div className="form-grid">
         <label className="field">
