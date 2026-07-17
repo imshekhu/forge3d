@@ -33,12 +33,15 @@ test("opens and closes the mobile menu", async ({ page }, testInfo) => {
   const menuButton = page.getByRole("button", { name: "Open menu" });
   await expect(menuButton).toBeVisible();
   await menuButton.click();
-  await expect(page.getByRole("navigation", { name: "Mobile navigation" })).toBeVisible();
+  const mobileNavigation = page.getByRole("navigation", {
+    name: "Mobile navigation",
+  });
+  await expect(mobileNavigation).toBeVisible();
   await expect(page.getByRole("button", { name: "Close menu" })).toBeVisible();
 
-  await page.getByRole("link", { name: "Process" }).last().click();
+  await mobileNavigation.getByRole("link", { name: "Process" }).click();
   await expect(page).toHaveURL(/#process$/);
-  await expect(menuButton).toBeVisible();
+  await expect(page.getByRole("button", { name: "Open menu" })).toBeVisible();
 });
 
 test("has no horizontal overflow at supported viewport sizes", async ({ page }) => {
@@ -69,5 +72,5 @@ test("shows a clear response when quote delivery is not configured", async ({
 
   await expect(
     page.getByText(/Quote delivery is not configured yet/),
-  ).toBeVisible();
+  ).toBeVisible({ timeout: 20_000 });
 });

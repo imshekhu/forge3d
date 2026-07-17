@@ -2079,6 +2079,10 @@ a {
     width: min(100% - 32px, var(--shell));
   }
 
+  .site-header.is-scrolled {
+    backdrop-filter: none;
+  }
+
   .section {
     padding: 90px 0;
   }
