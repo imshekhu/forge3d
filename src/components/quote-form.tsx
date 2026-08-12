@@ -73,13 +73,34 @@ export function QuoteForm() {
 
     const form = event.currentTarget;
     const data = new FormData(form);
+    const staticExport =
+      process.env.NEXT_PUBLIC_STATIC_EXPORT === "true";
+    const configuredEndpoint =
+      process.env.NEXT_PUBLIC_QUOTE_FORM_ENDPOINT?.trim();
+    const endpoint = configuredEndpoint || (staticExport ? "" : "/api/quotes");
+
+    if (!endpoint) {
+      setStatus({
+        state: "error",
+        message:
+          "Online quote delivery is being configured. Please check back shortly.",
+      });
+      return;
+    }
 
     try {
-      const response = await fetch("/api/quotes", {
+      const response = await fetch(endpoint, {
         method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
         body: data,
       });
-      const result = (await response.json()) as {
+      const result = (response.headers
+        .get("content-type")
+        ?.includes("application/json")
+        ? await response.json()
+        : {}) as {
         message?: string;
       };
 
