@@ -70,7 +70,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         {children}
-        <Analytics />
+        {process.env.NEXT_PUBLIC_STATIC_EXPORT !== "true" && <Analytics />}
       </body>
     </html>
   );
