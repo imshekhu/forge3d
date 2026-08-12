@@ -1,5 +1,7 @@
 import { ImageResponse } from "next/og";
 
+export const dynamic = "force-static";
+
 export const alt =
   "Forge3D — AI-assisted custom modelling and 3D printing in the GTA";
 export const size = { width: 1200, height: 630 };
